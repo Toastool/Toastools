@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\PlayerMove.cs" />
     <Compile Include="Assets\Follow.cs" />
+    <Compile Include="Assets\FadeEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
