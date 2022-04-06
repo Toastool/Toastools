@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    //상호작용 확인용 스크립트 였습니다.(필요없음)
     [SerializeField]
     private Color color;
     private SpriteRenderer spriteRenderer;
