@@ -1,5 +1,5 @@
 <?
-//SQL환경 설정을 해준다 !!!!!!!!!!!
+//SQL환경 설정을 해준다
 global $DB_HOST,$DB_USER,$DB_PASSWD,$DB_SNAME,$db_link;
 
 $DB_HOST="Mysql 또는 Mariadb IP를 입력하세요";
