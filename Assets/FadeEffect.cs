@@ -1,25 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public enum FadeState { FadeIn = 0, FadeOut, FadeInOut, FadeLoop };
+
+public class FadeEffect : MonoBehaviour
 {
     [SerializeField]
-    [Range(0.0f, 10f)]
+    [Range(0.01f, 10f)]
     private float fadeTime;
+    [SerializeField]
+    private AnimationCurve fadeCurve;
     private Image image;
+    private FadeState fadeState;
 
     private void Awake()
     {
-        image = GetComponent<image>();
+        image = GetComponent<Image>();
 
         // Fade In
-        StartCoroutine(fadeTime(1, 0));
+        //StartCoroutine(Fade(1, 0));
 
         // Fade Out
         //StartCoroutine(Fade(0, 1));
+
+        OnFade(FadeState.FadeOut);
     }
-    
+
     /*private void Update()
     {
         // image의 color 프로퍼티는 a 변수만 따로 set이 불가능해서 변수에 저장
@@ -41,16 +49,52 @@ public class NewBehaviourScript : MonoBehaviour
         // 바뀐 색상 정보를 image.color에 저장
         image.color = color;
     }*/
+
+    public void OnFade(FadeState state)
+    {
+        fadeState = state;
+
+        switch (fadeState)
+        {
+            case FadeState.FadeIn:
+                StartCoroutine(Fade(1, 0));
+                break;
+            case FadeState.FadeOut:
+                StartCoroutine(Fade(0, 1));
+                break;
+            case FadeState.FadeInOut:
+            //    ;
+            case FadeState.FadeLoop:
+                StartCoroutine(FadeInOut());
+                break;
+        }
+    }
+
+    private IEnumerator FadeInOut()
+    {
+        while (true)
+        {
+            yield return StartCoroutine(Fade(1, 0));
+
+            yield return StartCoroutine(Fade(0, 1));
+
+            if (fadeState == FadeState.FadeInOut)
+            {
+                break;
+            }
+        }
+    }
+
     private IEnumerator Fade(float start, float end)
     {
         float currenTime = 0.0f;
         float percent = 0.0f;
 
-        while(percent < 1)
+        while (percent < 1)
         {
             // fadeTime으로 나누어서 fadeTime 시간 동안
             // percent 값이 0에서 1로 증가하도록 함
-            currentTime += fadeTime.deltaTime;
+            currenTime += Time.deltaTime;
             percent = currenTime / fadeTime;
 
             // 알파값을 start부터 end까지 fadeTime 시간 동안 변화시킨다
