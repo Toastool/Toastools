@@ -1,5 +1,5 @@
 <?
-//SQL환경 설정을 해준다...........
+//SQL환경 설정을 해준다...........!!!!!!!!!!!!
 global $DB_HOST,$DB_USER,$DB_PASSWD,$DB_SNAME,$db_link;
 
 $DB_HOST="Mysql 또는 Mariadb IP를 입력하세요";
@@ -8,7 +8,7 @@ $DB_PASSWD="패스워드입력하세요";
 $DB_SNAME="데이터베이스명 입력";
 $db_link = false;
 
-//DB 서버 연결
+//DB 서버 연결git 
 function db_conn(){
 	global $DB_HOST,$DB_USER,$DB_PASSWD,$db_link;
 	$db_link=mysqli_connect("$DB_HOST","$DB_USER","$DB_PASSWD");
