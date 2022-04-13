@@ -982,7 +982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previewMap: {fileID: 1879169700}
-  defaultMap: {fileID: 0}
+  defaultMap: {fileID: 1421479236}
 --- !u!4 &647678809
 Transform:
   m_ObjectHideFlags: 0
